@@ -1,0 +1,41 @@
+<%= form_for(@trip) do |f| %>
+
+  <div class="row">
+    <%= f.label :title %>
+    <%= f.text_field :title%>
+  </div>
+
+  <div class="row">
+    <%= f.label :length, "Duration" %>
+    <%= f.text_field :length %>
+  </div>
+
+  <div class="row">
+    <%= f.label :location %>
+    <%= f.text_field :location%>
+  </div>
+
+  <div class="row">
+    <%= f.label :overview %>
+    <%= f.text_field :overview %>
+  </div>
+
+  <div class="row">
+    <%= f.label :price, "Approx. Price ($)" %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="row">
+    <%= f.label :tips %>
+    <%= f.text_field :tips %>
+  </div>
+
+  <div class="row">
+    <%= f.label :picture %>
+    <%= f.text_field :picture %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit Product" %>
+  </div>
+<% end %>
