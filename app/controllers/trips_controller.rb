@@ -1,13 +1,14 @@
 class TripsController < ApplicationController
   def index
     @users = User.all
-    @trips = Trip.all
+    @trips = Trip.where(hidden: false)
+    @trips_all = Trip.all
   end
 
   def show
     @trip = Trip.find(params[:id])
-    # @review = Review.new
-    # @reviews = @product.reviews
+    @review = Review.new
+    @reviews = @trip.reviews
   end
 
   def new
@@ -39,20 +40,19 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    # if user_signed_in?
+
+    @trip = Trip.find(params[:id])
     #   Trip.destroy(params[:id])
     # else
     #   flash[:notice] = "Please sign in to delete entry."
     # end
-    if user_signed_in?
-      if !@product
-        flash[:notice] = "Trip succesfully deleted."
-        redirect_to trips_path
-      else
-        render :show
-      end
+    @trip.hidden = true
+    @trip.save
+    if !@product
+      flash[:notice] = "Trip succesfully deleted."
+      redirect_to trips_path
     else
-      flash[:notice] = "You must sign in first to delete Item"
+      render :show
     end
 
   end

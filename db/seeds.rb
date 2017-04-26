@@ -28,3 +28,13 @@ Trip.create!([{
 
     The cruising season in Alaska begins in May and lasts through September, and cruises usually last between seven and 12 days. Some cruise lines also offer cruise tours, a combination of an Alaskan cruise and a land tour. On the land tour portion, you will journey inland by train or motorcoach and visit scenic destinations like Denali National Park, the Yukon Territory or the Canadian Rockies. We offer huge discounts on all of these vacations, on every cruise line in Alaska."
   }])
+
+User.create!([{
+  name: "Mike Patterson",
+  email: "mp@gmail.com",
+  password: "123456"},
+  {
+    name: "Lucy",
+    email: "lucy@gmail.com",
+    password: "123456"}
+  ])
