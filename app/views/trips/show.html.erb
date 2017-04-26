@@ -9,6 +9,17 @@
   <p><%= @trip.overview %></p>
 <h3>Tips: </h3>
   <p><%= @trip.tips %></p>
+  <hr>
 
-  <%= link_to "Edit", edit_trip_path(@trip) %> |
-  <%= link_to 'Destroy', @trip, method: :delete, data:{ confirm: 'Are you sure?' } %>
+  <%= link_to "Edit Article", edit_trip_path(@trip) %>
+  <% if !current_user.nil? %>  |
+  <%= link_to 'Delete Article', @trip, method: :delete, data:{ confirm: 'Are you sure?' } %>
+  <% end %>
+  <hr>
+
+<%= render 'reviews' %>
+
+
+<% if !current_user.nil? %>
+  <%= render "reviews/review_form" %>
+<% end %>

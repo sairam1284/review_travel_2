@@ -3,19 +3,39 @@
 <% if user_signed_in? %>
   <h3> 2. Welcome <u><%= current_user.name %>. Thanks for signing in!</u></h3>
 <% else %>
-  <h3>3. Sign in if you would like to write a review </h3>
+  <h3>2. Sign in if you would like to write a review </h3>
 <% end %>
 
-<h2> 4. List of trips </h2>
-<ol type="a">
-  <% @trips.each do |trip| %>
-  <li>
-    <h2><%= link_to trip.title, trip%> </h2>
-    <h4>  Location: <%= trip.location %></h4>
-    <h4>  Length: <%= trip.length %></h4>
-    <h4>  Price: <%= trip.price %></h4>
-  </li>
-  <%end%>
-</ol>
+<h2> 3. List of trips </h2>
+<table border = "1">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Location</th>
+      <th>Duration</th>
+      <th>Price</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trips.each do |trip| %>
+      <tr>
+        <td><strong><%= link_to trip.title, trip%> </strong></td>
+        <td>  <%= trip.location %></td>
+        <td>  <%= trip.length %></td>
+        <td>  <%= trip.price %></td>
+        <td> N/A </td>
+      </td>
+    <%end%>
+  </tbody>
+</table>
 
 <h4><%= link_to "Add New Trip", new_trip_path %></h4>
+
+<h3> 4. List of users </h3>
+<ol type="a">
+  <% @users.each do |user| %>
+  <li>Name: <%= user.name%>,  Email: <%= user.email %></li>
+  <%end%>
+</ol>
