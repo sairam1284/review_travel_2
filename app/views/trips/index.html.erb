@@ -1,4 +1,4 @@
-<h1>1. Welcome to the product review page</h1>
+<h1>1. Welcome to the Travel Trips Home Page</h1>
 
 <% if user_signed_in? %>
   <h3> 2. Welcome <u><%= current_user.name %>. Thanks for signing in!</u></h3>
@@ -6,25 +6,16 @@
   <h3>3. Sign in if you would like to write a review </h3>
 <% end %>
 
-<h2> 4. List of Users </h2>
-
-<ol type="a">
-  <% @users.each do |user| %>
-  <li>Name: <%= user.name%>,  Email: <%= user.email %></li>
-  <%end%>
-</ol>
-
-<h2> 5. List of trips </h2>
+<h2> 4. List of trips </h2>
 <ol type="a">
   <% @trips.each do |trip| %>
   <li>
-    <h2>Name: <%= trip.title%> </h2>
+    <h2><%= link_to trip.title, trip%> </h2>
     <h4>  Location: <%= trip.location %></h4>
     <h4>  Length: <%= trip.length %></h4>
     <h4>  Price: <%= trip.price %></h4>
-    <h3>Overview: </h3>
-      <p><%= trip.overview %>
-      </p>
   </li>
   <%end%>
 </ol>
+
+<h4><%= link_to "Add New Trip", new_trip_path %></h4>

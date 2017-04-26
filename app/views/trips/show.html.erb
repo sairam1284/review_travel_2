@@ -1,0 +1,14 @@
+<h2><%= @trip.title%> </h2>
+<h3>Location: </h3>
+  <p><%= @trip.location %></p>
+<h3>Length: </h3>
+  <p><%= @trip.length %></p>
+<h3>Price(approx): </h3>
+  <p>$<%= @trip.price %></p>
+<h3>Overview: </h3>
+  <p><%= @trip.overview %></p>
+<h3>Tips: </h3>
+  <p><%= @trip.tips %></p>
+
+  <%= link_to "Edit", edit_trip_path(@trip) %> |
+  <%= link_to 'Destroy', @trip, method: :delete, data:{ confirm: 'Are you sure?' } %>
