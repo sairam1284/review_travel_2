@@ -19,8 +19,8 @@
 
     <div class="vote">
       <% if review.votes.where(user_id: current_user.id).count < 2 %>
-        <%= button_to 'Up Vote', review_upvote_path(review), class: "upvote", method: :post%>
-        <%= button_to 'Down Vote', review_downvote_path(review), class: "downvote", method: :post%>
+        <%= button_to 'Up Vote', review_upvote_path(review), id: "upvote", method: :post%>
+        <%= button_to 'Down Vote', review_downvote_path(review), id: "downvote", method: :post%>
       <%end%>
     </div>
 
@@ -30,7 +30,7 @@
         <%  sum += vote.score %>
       <% end %>
 
-        <%= "Current Vote Score: #{sum}" %><br>
+        <div id="score"><%= "Current Vote Score: #{sum}" %><br></div>
     <%end %>
   </ol>
 <hr>
