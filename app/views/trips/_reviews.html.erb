@@ -1,0 +1,55 @@
+
+<h3 class="section-heading"> Trip Reviews </h3>
+<% @reviews.each do |review| %>
+
+  <ol style="list-style: none;">
+    <li><strong> <%= review.header %> </strong> <br></li>
+    <li><i> By: <%= review.user.name %> on <%= review.created_at.strftime(" %B %d, %Y") %></i></li>
+    <br>
+    <li class="review-body"><%= review.body %> <br></li>
+    <br>
+    <li><strong>User Score: <%= review.rating %>/5</strong></li>
+    <% if !current_user.nil? %>
+      <% if current_user == review.user || current_user.is_admin? %>
+        <%= link_to 'Delete Review', trip_review_path(@trip, review),method: :delete, data:{ confirm: 'Are you sure?' } %> |
+        <%= link_to "Edit Review", edit_trip_review_path(@trip, review) %></li>
+      <%end %>
+<br>
+<br>
+
+    <div class="vote">
+      <% if review.votes.where(user_id: current_user.id).count < 2 %>
+        <%= button_to 'Up Vote', review_upvote_path(review), class: "upvote", method: :post%>
+        <%= button_to 'Down Vote', review_downvote_path(review), class: "downvote", method: :post%>
+      <%end%>
+    </div>
+
+      <binding.pry>
+      <% sum = 0 %>
+      <% review.votes.each do |vote| %>
+        <%  sum += vote.score %>
+      <% end %>
+
+        <%= "Current Vote Score: #{sum}" %><br>
+    <%end %>
+  </ol>
+<hr>
+
+<%end%>
+
+<script>
+let i = 0
+function upVote() {
+    document.getElementById('inc').value = ++i;
+    var someVarName = localStorage.getItem("someVarName");
+}
+function downVote() {
+    document.getElementById('inc').value = --i;
+}
+</script>
+<div class="vote-test">
+  <p> For testing Purposes </p>
+  <button onclick="upVote()">up vote</button>
+  <button onclick="downVote()">down vote</button>
+  <input type="text" id="inc" value="0"></input>
+</div>

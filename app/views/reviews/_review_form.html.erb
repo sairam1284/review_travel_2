@@ -1,0 +1,23 @@
+<h3 class="section-heading"> Add Review for <u><%= @trip.title %></u></h3>
+<%= @message %>
+<%= form_for([@trip, @review]) do |f| %>
+
+  <div class="form-small">
+    <%= f.label :header, "Heading (100 max character):" %>
+    <%= f.text_field :header%>
+  </div>
+
+  <div class="form-large">
+    <%= f.label :body, "Review:" %>
+    <%= f.text_area :body%>
+  </div>
+
+  <div class="form-small">
+    <%= f.label :rating, "Rating" %>
+    <%= f.collection_radio_buttons :rating, Review::RATINGS, :to_i, :to_s%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit Review" %>
+  </div>
+<% end %>
