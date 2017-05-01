@@ -1,3 +1,4 @@
+
 class TripsController < ApplicationController
   def index
     @users = User.all
@@ -17,9 +18,11 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
+    @trip.user = current_user
     if @trip.save
       redirect_to trips_path, notice: "Successfully added trip."
     else
+      flash[:fail_notice] = "Trip failed to be saved"
       render :new
     end
   end
@@ -35,17 +38,13 @@ class TripsController < ApplicationController
       flash[:notice] = "Trip was succesfully updated."
       redirect_to trip_path(@trip)
     else
+      flash[:fail_notice] = "Trip failed to be saved"
       render :edit
     end
   end
 
   def destroy
-
     @trip = Trip.find(params[:id])
-    #   Trip.destroy(params[:id])
-    # else
-    #   flash[:notice] = "Please sign in to delete entry."
-    # end
     @trip.hidden = true
     @trip.save
     if !@product
@@ -61,4 +60,5 @@ class TripsController < ApplicationController
   def trip_params
     params.require(:trip).permit(:title, :length, :location, :overview, :price, :tips, :picture)
   end
+
 end

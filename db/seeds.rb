@@ -13,7 +13,8 @@ Trip.create!([{
     price: 899,
     overview: "The Aare Cycle Route begins in Interlaken on Lake Thun against the backdrop of the Jungfrau, Mönch and Eiger mountains and is one of the most well-known cycle routes in Switzerland. You will pass through the Swiss capital of Bern, a UNESCO World Heritage Site, where the famous Toblerone chocolate is made.
 
-    Cycling along the Jura with its Baroque towns, you will come to the confluence of the Aare and Rhine Rivers and continue up-river towards the Rhine Falls, which you will be able to experience during a spectacular boat trip. The Council town of Constance on Lake Constance is your destination."
+    Cycling along the Jura with its Baroque towns, you will come to the confluence of the Aare and Rhine Rivers and continue up-river towards the Rhine Falls, which you will be able to experience during a spectacular boat trip. The Council town of Constance on Lake Constance is your destination.",
+    picture: "/Users/malasubramaniam/challenges/phase_11/review_travel_2/app/assets/images/snoopy.jpg"
   },
   {
     title: "Alaskan Cruise",
@@ -30,11 +31,18 @@ Trip.create!([{
   }])
 
 User.create!([{
-  name: "Mike Patterson",
-  email: "mp@gmail.com",
-  password: "123456"},
+    name: "Mike Patterson",
+    email: "mp@gmail.com",
+    password: "123456",
+    role: "member"},
   {
     name: "Lucy",
     email: "lucy@gmail.com",
-    password: "123456"}
+    password: "123456",
+    role: "member"},
+  {
+    name: "Me",
+    email: "me@gmail.com",
+    password: "123456",
+    role: "admin"}
   ])

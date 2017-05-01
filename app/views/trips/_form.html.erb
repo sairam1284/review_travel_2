@@ -1,41 +1,43 @@
+<p class="fail_notice"><%= notice %></p>
+
 <%= form_for(@trip) do |f| %>
 
-  <div class="row">
-    <%= f.label :title %>
+  <div class="form-small">
+    <%= f.label :title, "Title (100 character max)" %>
     <%= f.text_field :title%>
   </div>
 
-  <div class="row">
+  <div class="form-small">
     <%= f.label :length, "Duration" %>
     <%= f.text_field :length %>
   </div>
 
-  <div class="row">
+  <div class="form-small">
     <%= f.label :location %>
-    <%= f.text_field :location%>
+    <%= f.select :location, ['North America', 'Central America', 'South America', 'Europe', 'Africa', 'Middle East', 'Asia', 'Oceania', 'Other']%>
   </div>
 
-  <div class="row">
-    <%= f.label :overview %>
-    <%= f.text_field :overview %>
-  </div>
-
-  <div class="row">
+  <div class="form-small">
     <%= f.label :price, "Approx. Price ($)" %>
     <%= f.number_field :price %>
   </div>
 
-  <div class="row">
-    <%= f.label :tips %>
-    <%= f.text_field :tips %>
-  </div>
-
-  <div class="row">
+  <div class="form-small">
     <%= f.label :picture %>
-    <%= f.text_field :picture %>
+    <%= f.file_field :picture %>
   </div>
 
-  <div class="actions">
+  <div class="form-large">
+    <%= f.label :overview %>
+    <%= f.text_area :overview, class: "text-input" %>
+  </div>
+
+  <div class="form-large">
+    <%= f.label :tips %>
+    <%= f.text_area :tips, class: "text-input" %>
+  </div>
+
+  <div class="form-small">
     <%= f.submit "Submit Update" %>
   </div>
 <% end %>

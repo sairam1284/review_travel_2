@@ -9,23 +9,34 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <li> <%= link_to 'Sign Up', new_user_registration_path%></li>
-        <li> <%= link_to 'Back Home', root_path%></li>
 
-        <% if user_signed_in? %>
-          <li>
-          <%= link_to('Sign Out', destroy_user_session_path, method: :delete) %>
-          </li>
-        <% else %>
-          <li>
-          <%= link_to('Sign In', new_user_session_path)  %>
-          </li>
-        <% end %>
+    <div class="top-bar">
+      <div class="top-left-logo">
+        <img src="/pics_1.jpg">
+        <%= image_tag("snoopy.jpg", size: "50x50") %>
+      </div>
+    </div>
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu horizontal">
+          <li class="nav"> <%= link_to 'About Us', root_path%></li>
+          <li class="nav"> <%= link_to 'Trip List', root_path%></li>
+          <% if !current_user.nil? %>
+            <li class="nav"><%= link_to "Add New Trip", new_trip_path %></li>
+          <% end %>
+          <% if user_signed_in? %>
+            <li class="nav">
+            <%= link_to('Sign Out', destroy_user_session_path, method: :delete) %> </li>
+          <% else %>
+            <li class="nav">
+            <%= link_to('Sign In', new_user_session_path)  %>
+            </li>
+          <% end %>
+          <li class="nav"> <%= link_to 'Sign Up', new_user_registration_path%></li>
 
-      </ul>
-    </nav>
+        </ul>
+      </div>
+    </div>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

@@ -1,41 +1,44 @@
-<h1>1. Welcome to the Travel Trips Home Page</h1>
-
 <% if user_signed_in? %>
-  <h3> 2. Welcome <u><%= current_user.name %>. Thanks for signing in!</u></h3>
+  <h4 class="section-heading"> Welcome <u><%= current_user.name %>. Thanks for signing in!</u></h4>
 <% else %>
-  <h3>2. Sign in if you would like to write a review </h3>
+  <h4 class="section-heading">Sign in if you would like to write a review </h4>
 <% end %>
 
-<h2> 3. List of trips </h2>
-<table border = "1">
+<h2 class="section-heading"> List of trips </h2>
+<table border = "1" id="myTable2">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Location</th>
-      <th>Duration</th>
-      <th>Price</th>
-      <th>Rating</th>
+      <th onclick="sortTable(0)">Title</th>
+      <th onclick="sortTable(1)">Location</th>
+      <th onclick="sortTable(2)">Duration</th>
+      <th onclick="sortTable(3)">Price</th>
+      <th onclick="sortTable(4)">Average Rating</th>
+      <th>Pic</th>
+
     </tr>
   </thead>
 
   <tbody>
     <% @trips.each do |trip| %>
       <tr>
-        <td><strong><%= link_to trip.title, trip%> </strong></td>
-        <td>  <%= trip.location %></td>
-        <td>  <%= trip.length %></td>
-        <td>  <%= trip.price %></td>
-        <td> N/A </td>
-      </td>
-    <%end%>
+        <td><strong><%= link_to trip.title, trip%></strong></td>
+        <td><%= trip.location %></td>
+        <td><%= trip.length %></td>
+        <td><%= trip.price %></td>
+        <td><%= trip.average_score %> </td>
+        <td><%= image_tag("snoopy.jpg", size: "50x50") %></td>
+
+      </tr>
+    <% end %>
   </tbody>
 </table>
 
-<h4><%= link_to "Add New Trip", new_trip_path %></h4>
-
-<h3> 4. List of users </h3>
-<ol type="a">
-  <% @users.each do |user| %>
-  <li>Name: <%= user.name%>,  Email: <%= user.email %></li>
-  <%end%>
-</ol>
+<% if !current_user.nil? && current_user.is_admin? %>
+  <h3> 4. List of users </h3>
+  <ol type="a">
+    <% @users.each do |user| %>
+    <li>Name: <%= user.name%>,  Email: <%= user.email %>
+    <%= link_to 'Delete User', user_registration_path(user), method: :delete, data:{ confirm: 'Are you sure?' } %> </li>
+    <%end%>
+  </ol>
+<%end%>
