@@ -36,20 +36,3 @@
 <hr>
 
 <%end%>
-
-<script>
-let i = 0
-function upVote() {
-    document.getElementById('inc').value = ++i;
-    var someVarName = localStorage.getItem("someVarName");
-}
-function downVote() {
-    document.getElementById('inc').value = --i;
-}
-</script>
-<div class="vote-test">
-  <p> For testing Purposes </p>
-  <button onclick="upVote()">up vote</button>
-  <button onclick="downVote()">down vote</button>
-  <input type="text" id="inc" value="0"></input>
-</div>
