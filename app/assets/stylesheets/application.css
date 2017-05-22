@@ -26,8 +26,15 @@
 }
 
 .nav {
-  background-color: #E6E6E6;
+  background-color: #24292E;
   display: inline-block;
+}
+.nav:hover {
+  background-color: #E6E6E6;
+  transition: 0.5s;
+}
+.top-bar {
+  background-color: #24292E;
 }
 .review-body {
   text-indent: 3rem;
@@ -35,9 +42,6 @@
 
 .vote-test p, button{
   background-color: red;
-}
-.nav:hover {
-  background-color: yellow;
 }
 
 .form-small {
@@ -53,4 +57,11 @@
   height: 200px;
   rows: 50;
   float:left;
+}
+.notice, .alert {
+  background-color: #37BECC;
+  font-style: italic;
+}
+.container_standard {
+  border: 25px solid #E6E6E6;
 }

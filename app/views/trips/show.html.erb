@@ -1,44 +1,46 @@
-<h2 class="first-heading"><%= @trip.title%> </h2>
-<i class="section-heading">     Written By:   </i>
-  <% if @trip.user.nil?%>
-    <i><strong>  <%= "Anonymous"%></strong> </i>
-  <% else %>
-    <i> <strong> <%=@trip.user.name%></strong></i>
-  <% end%>
-  <% if !@trip.reviews.empty? %>
-    <h5 class="section-heading">Average Rating: <strong><%= @trip.average_score %>/5</strong></h5>
-  <% end %>
-<h3 class="section-heading"> Overview </h3>
-<hr>
-<div class="overview-details">
-  <p><b>Location:</b> <%= @trip.location %></p>
-  <p><b>Length:</b> <%= @trip.length %></p>
-  <p><b>Price(approx):</b> <%= @trip.price %></p>
-</div>
-<div class="overview-img">
-  <img src="/pics_1.jpg">
-</div>
-<br>
-<h3 class="section-heading">Details </h3>
-<hr>
-  <p><%= @trip.overview %></p>
-<h3 class="section-heading">Tips </h3>
+<div class="container_standard">
+  <h2 class="first-heading"><%= @trip.title%> </h2>
+  <i class="section-heading">     Written By:   </i>
+    <% if @trip.user.nil?%>
+      <i><strong>  <%= "Anonymous"%></strong> </i>
+    <% else %>
+      <i> <strong> <%=@trip.user.name%></strong></i>
+    <% end%>
+    <% if !@trip.reviews.empty? %>
+      <h5 class="section-heading">Average Rating: <strong><%= @trip.average_score %>/5</strong></h5>
+    <% end %>
+  <h3 class="section-heading"> Overview </h3>
   <hr>
-  <p><%= @trip.tips %></p>
-
-<h3 class="section-heading">See Also </h3>
+  <div class="overview-details">
+    <p><b>Location:</b> <%= @trip.location %></p>
+    <p><b>Length:</b> <%= @trip.length %></p>
+    <p><b>Price(approx):</b> <%= @trip.price %></p>
+  </div>
+  <div class="overview-img">
+    <img src="/pics_1.jpg">
+  </div>
+  <br>
+  <h3 class="section-heading">Details </h3>
   <hr>
+    <p><%= @trip.overview %></p>
+  <h3 class="section-heading">Tips </h3>
+    <hr>
+    <p><%= @trip.tips %></p>
+
+  <h3 class="section-heading">See Also </h3>
+    <hr>
 
 
-<% if !current_user.nil? %>
-  <% if current_user == @trip.user || current_user.is_admin? %>
-  <%= link_to "Edit Article", edit_trip_path(@trip) %> |
-  <%= link_to 'Delete Article', @trip, method: :delete, data:{ confirm: 'Are you sure?' } %>
+  <% if !current_user.nil? %>
+    <% if current_user == @trip.user || current_user.is_admin? %>
+    <%= link_to "Edit Article", edit_trip_path(@trip) %> |
+    <%= link_to 'Delete Article', @trip, method: :delete, data:{ confirm: 'Are you sure?' } %>
+    <% end %>
   <% end %>
-<% end %>
 
-<%= render 'reviews' %>
+  <%= render 'reviews' %>
 
-<% if !current_user.nil? %>
-  <%= render "reviews/review_form" %>
-<% end %>
+  <% if !current_user.nil? %>
+    <%= render "reviews/review_form" %>
+  <% end %>
+</div>

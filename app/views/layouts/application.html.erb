@@ -13,8 +13,11 @@
   </head>
 
   <body>
-
+  <div class="container">
     <div class="top-bar">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      
       <div class="top-left-logo">
         <%= image_tag("logo.jpeg", size: "50x80") %>
       </div>
@@ -41,8 +44,7 @@
       </div>
     </div>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= yield %>
+  </div>
   </body>
 </html>
